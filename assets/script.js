@@ -64,18 +64,10 @@ function  nextSlide () {
 			console.log(currentSlideIndex)
 			changeSlide()
 			updateActiveDot()
-			
-			if (currentSlideIndex >= 4) {
-				currentSlideIndex = 0
-				slideImage.setAttribute("src", "./assets/images/slideshow/" + slides[0].image )	
-			}
-		}
-
-		
+		}	
 	)
 }
 nextSlide()
-
 
 function previousSlide () {
 	arrowLeft.addEventListener("click", () => 
@@ -87,6 +79,7 @@ function previousSlide () {
 	)
 }
 previousSlide()
+
 
 
 //EVENTS
