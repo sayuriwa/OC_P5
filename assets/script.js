@@ -49,7 +49,8 @@ createActiveDot()
 
 function changeSlide () {
 	slideImage.setAttribute("src", "./assets/images/slideshow/" + slides[currentSlideIndex].image)
-	textslideImage = slides[currentSlideIndex].tagLine
+	// textslideImage = slides[currentSlideIndex].tagLine
+	textslideImage.innerHTML = slides[currentSlideIndex].tagLine
 }
 
 function updateActiveDotRight () {	
