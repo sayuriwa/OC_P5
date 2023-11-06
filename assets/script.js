@@ -17,6 +17,7 @@ const slides = [
 	}
 ]
 console.log(slides.length)
+
 //VARIABLES
 let currentSlideIndex = 0
 let arrowLeft = document.querySelector("#banner .arrow_left")
@@ -34,16 +35,15 @@ function createDots () {
 		let dot = document.createElement("div")
 		dot.classList.add("dot")
 		dotsContainer.appendChild(dot)
-	}
-	
+	}	
 }
 createDots()
 
 let dotsList = document.querySelectorAll(".dots .dot")	
 
 function createActiveDot () {
-	let dotActive = dotsList[slideIndex]
-	dotActive.classList.add("dot_selected")
+	let activeDot = dotsList[slideIndex]
+	activeDot.classList.add("dot_selected")
 }
 createActiveDot()
 
@@ -52,10 +52,16 @@ function changeSlide () {
 	textslideImage = slides[currentSlideIndex].tagLine
 }
 
-function updateActiveDot () {	
-	dotActive = dotsList[currentSlideIndex]
-	dotActive.classList.add("dot_selected")
+function updateActiveDotRight () {	
+	activeDot = dotsList[currentSlideIndex]
+	activeDot.classList.add("dot_selected")
 	dotsList[currentSlideIndex - 1].classList.remove("dot_selected")
+}
+
+function updateActiveDotLeft () {	
+	activeDot = dotsList[currentSlideIndex]
+	activeDot.classList.add("dot_selected")
+	dotsList[currentSlideIndex + 1].classList.remove("dot_selected")
 }
 
 function  nextSlide () {
@@ -63,7 +69,7 @@ function  nextSlide () {
 		{	currentSlideIndex++	
 			console.log(currentSlideIndex)
 			changeSlide()
-			updateActiveDot()
+			updateActiveDotRight()
 		}	
 	)
 }
@@ -74,7 +80,7 @@ function previousSlide () {
 		{	currentSlideIndex--
 			console.log(currentSlideIndex)
 			changeSlide()
-			updateActiveDot()
+			updateActiveDotLeft()
 		}
 	)
 }
