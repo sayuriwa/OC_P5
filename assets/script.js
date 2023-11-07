@@ -49,7 +49,6 @@ createActiveDot()
 
 function changeSlide () {
 	slideImage.setAttribute("src", "./assets/images/slideshow/" + slides[currentSlideIndex].image)
-	// textslideImage = slides[currentSlideIndex].tagLine
 	textslideImage.innerHTML = slides[currentSlideIndex].tagLine
 }
 
@@ -67,21 +66,39 @@ function updateActiveDotLeft () {
 
 function  nextSlide () {
 	arrowRight.addEventListener("click", () => 
-		{	currentSlideIndex++	
-			console.log(currentSlideIndex)
-			changeSlide()
-			updateActiveDotRight()
+		{	if (currentSlideIndex >= slides.length-1) {
+				currentSlideIndex = 0
+				changeSlide()
+				activeDot = dotsList[0]
+				activeDot.classList.add("dot_selected")
+				dotsList[slides.length-1].classList.remove("dot_selected")
+			}
+			else {
+				currentSlideIndex++	
+				console.log(currentSlideIndex)
+				changeSlide()
+				updateActiveDotRight()
+			}	
 		}	
-	)
+	)							
 }
 nextSlide()
 
 function previousSlide () {
 	arrowLeft.addEventListener("click", () => 
-		{	currentSlideIndex--
-			console.log(currentSlideIndex)
-			changeSlide()
-			updateActiveDotLeft()
+		{	if (currentSlideIndex <= 0) {
+				currentSlideIndex = slides.length - 1
+				changeSlide()
+				activeDot = dotsList[slides.length-1]
+				activeDot.classList.add("dot_selected")
+				dotsList[0].classList.remove("dot_selected")
+			}
+			else {
+				currentSlideIndex--
+				console.log(currentSlideIndex)
+				changeSlide()
+				updateActiveDotLeft()
+			}
 		}
 	)
 }
